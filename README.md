@@ -55,9 +55,13 @@ All systems communicate through a pfSense firewall acting as the gateway.
 
 - Installed **Oracle VirtualBox** to host all virtual machines
 - Deployed **pfSense** with dual interfaces (WAN/LAN) to enforce network segmentation
-- Created an isolated **internal network (192.168.1.0/24)**
+  - WAN (External): Connected to the VirtualBox NAT network for internet access.
+  - LAN (Internal): An isolated **internal virtual network** named "LabNet" with the `192.168.1.0/24` block to manage internal network traffic.
+  - Gateway Configuration: Configured pfSense as the single exit point (Gateway) for the entire internal network, providing DHCP, DNS (`8.8.8.8`), and the local domain name `soclab.lan`.
 - Installed **Kali Linux** and configured it as the SOC analysis platform
-- Installed **Splunk Enterprise** on Kali Linux
+- Installed **Splunk Enterprise** on Kali Linux (4 GB of RAM)
+  - Splunk `.deb` package was downloaded and installed using `dpkg`, and configured with `enable boot-start` to ensure it starts automatically upon system boot.
+  - Data Ingestion Setup: TCP port `9997` (Indexing Port) was configured via the Splunk web interface (`localhost:8000`) to listen for incoming logs from external systems (Windows DC01).
 - Deployed **Windows Server DC01** with Active Directory
 - Installed and configured **Sysmon** on DC01
 - Configured **Splunk Universal Forwarder** to send logs to Kali
