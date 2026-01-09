@@ -62,10 +62,18 @@ All systems communicate through a pfSense firewall acting as the gateway.
 - Installed **Splunk Enterprise** on Kali Linux (4 GB of RAM)
   - Splunk `.deb` package was downloaded and installed using `dpkg`, and configured with `enable boot-start` to ensure it starts automatically upon system boot.
   - Data Ingestion Setup: TCP port `9997` (Indexing Port) was configured via the Splunk web interface (`localhost:8000`) to listen for incoming logs from external systems (Windows DC01).
-- Deployed **Windows Server DC01** with Active Directory
-- Installed and configured **Sysmon** on DC01
-- Configured **Splunk Universal Forwarder** to send logs to Kali
+- Deployed Target System & Domain Environment (**Windows Server DC01**)
+  - **Windows Server 2022** was installed in **"Desktop Experience"** mode using an ISO and connected to the pfSense gateway with a static IP of `192.168.1.10`.
+  - Active Directory Configuration: A new forest was created with the root domain name `soclab.lan`, and DC01 was promoted to the Domain Controller role. This enabled the generation of SYSVOL, NTDS, and Active Directory security logs.
+- Installed and configured **Sysmon** (System Monitor) on DC01 for Enhanced Monitoring.
+  - Advanced Endpoint Telemetry: Provides deep visibility (process command lines, etc.) in cases where standard Windows logs are insufficient.
+  - Noise Reduction: To prevent complexity during analysis, SwiftOnSecurity's optimized `config.xml` file was used to ensure only critical security events are monitored.
+- Configured **Splunk Universal Forwarder** on DC01 to send logs to Kali
+  - Log Forwarding Agent Deployment: Defined the Kali Linux machine (`192.168.1.100:9997`) as the `"Receiving Indexer"`.
+  - Log Configuration (`Inputs.conf`): The `inputs.conf` file was manually edited to ensure that Application, Security, System, and specifically Sysmon/Operational logs are sent to the `main` index.
+  - Persistence: The `SplunkForwarder` service was restarted, and the log pipeline was verified using the `netstat` command.
 - Validated end-to-end detection by generating events and analyzing them in Splunk
+- SOC Dashboard panel was created in Splunk to categorize attack types for real-time monitoring.
 
 ---
 
