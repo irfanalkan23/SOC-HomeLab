@@ -88,6 +88,12 @@ All systems communicate through a pfSense firewall acting as the gateway.
 
 ---
 
+![VirtualBox Environment Configuration](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab%20VirtualBox.png)
+![Windows Server DC01 AD DS Setup](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab%20Windows%20Server%20DC01.png)
+![Splunk SOC Dashboard Real-Time Attack Monitoring](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab%20Kali%20Splunk.jpg)
+
+---
+
 ## 📌 Purpose
 
 This homelab is designed for:
