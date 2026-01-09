@@ -88,9 +88,9 @@ All systems communicate through a pfSense firewall acting as the gateway.
 
 ---
 
-![VirtualBox Environment Configuration](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab-VirtualBox.png)
-![Windows Server DC01 AD DS Setup](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab-Windows-Server-DC01.png)
-![Splunk SOC Dashboard Real-Time Attack Monitoring](https://raw.githubusercontent.com/irfanalkan23/SOC-HomeLab/main/HomeLab%20Kali-Splunk.jpg)
+![VirtualBox Environment Configuration](images/HomeLab-VirtualBox.png)
+![Windows Server DC01 AD DS Setup](images/HomeLab-Windows-Server-DC01.png)
+![Splunk SOC Dashboard Real-Time Attack Monitoring](images/HomeLab-Kali-Splunk.jpg)
 
 ---
 
